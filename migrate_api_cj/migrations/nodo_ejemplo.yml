@@ -1,0 +1,20 @@
+id: nodo_ejemplo
+label: 'Ejemplo de migración'
+migration_group: node
+source: 
+  plugin: csv
+  path: modules/migrate_api_cj/data/nodo_ejemplo.csv
+  ids: [unique_id]
+process:
+  title: title
+  field_description: description
+  body/value:
+    plugin: get
+    source: body
+  body/format: 
+    plugin: default_value
+    default_value: 'full_html'
+destination: 
+  plugin: 'entity:node'
+  default_bundle: article
+migration_dependencies: {}
