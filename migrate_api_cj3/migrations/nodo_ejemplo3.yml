@@ -1,0 +1,40 @@
+id: nodo_ejemplo3
+label: 'Ejemplo de migración 3'
+migration_group: files
+source: 
+  constants:
+    SOURCE_BASE_PATH: modules/custom/migrate_api_cj3/assets/images
+    DRUPAL_FILE_DIRECTORY: 'public://images'
+  plugin: csv
+  path: modules/custom/migrate_api_cj3/data/nodo_ejemplo3.csv
+  ids: [image_id]
+  header_offset: null
+  fields:
+    - name: image_id
+      label: 'Image id'
+    - name: name
+      label: 'Image name'
+process:
+  source_full_path:
+    - plugin: concat
+      delimiter: /
+      source: 
+        - constants/SOURCE_BASE_PATH
+        - name
+    - plugin: urlencode
+  uri_file:
+    - plugin: concat
+      delimiter: /
+      source: 
+        - constants/DRUPAL_FILE_DIRECTORY
+        - name
+    - plugin: urlencode
+  filename: name
+  uri:
+    - plugin: file_copy
+      source: 
+        - '@source_full_path'
+        - '@uri_file'
+destination:
+  plugin: 'entity:file'
+
