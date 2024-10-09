@@ -4,7 +4,7 @@ migration_group: files
 source: 
   constants:
     SOURCE_BASE_PATH: modules/custom/migrate_api_cj3/assets/images
-    DRUPAL_FILE_DIRECTORY: 'public://images'
+    DRUPAL_FILE_DIRECTORY: 'public://'
   plugin: csv
   path: modules/custom/migrate_api_cj3/data/nodo_ejemplo3.csv
   ids: [image_id]
@@ -24,7 +24,6 @@ process:
     - plugin: urlencode
   uri_file:
     - plugin: concat
-      delimiter: /
       source: 
         - constants/DRUPAL_FILE_DIRECTORY
         - name
