@@ -1,0 +1,10 @@
+name: Migrate API CJ Module 5
+description: Custom module to migrate 5
+package: Custom
+type: module
+version: 1.0
+core_version_requirement: ">=8"
+dependencies:
+  - drupal:migrate
+  - migrate_plus:migrate_plus
+  - migrate_tools:migrate_tools

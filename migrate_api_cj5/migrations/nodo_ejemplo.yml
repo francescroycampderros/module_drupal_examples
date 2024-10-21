@@ -1,0 +1,30 @@
+id: games
+label: 'Games'
+source:
+  constants:
+    SOURCE_BASE_PATH: modules/custom/migrate_api_cj5/assets/images
+    DRUPAL_FILE_DIRECTORY: 'public://'
+  plugin: games
+  key: migrate
+process:
+  source_full_path:
+    - plugin: concat
+      delimiter: /
+      source: 
+        - constants/SOURCE_BASE_PATH
+        - path
+    - plugin: urlencode
+  uri_file:
+    - plugin: concat
+      source: 
+        - constants/DRUPAL_FILE_DIRECTORY
+        - path
+    - plugin: urlencode
+  filename: filename
+  uri:
+    - plugin: file_copy
+      source: 
+        - '@source_full_path'
+        - '@uri_file'
+destination:
+  plugin: 'entity:file'
