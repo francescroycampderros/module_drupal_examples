@@ -1,0 +1,8 @@
+name: Migrate API CJ Module
+description: Custom module to migrate
+package: Custom
+type: module
+version: 1.0
+core_version_requirement: ">=8"
+dependencies:
+  - drupal:core
