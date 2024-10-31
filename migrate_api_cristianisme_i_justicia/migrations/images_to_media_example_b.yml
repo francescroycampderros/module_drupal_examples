@@ -1,19 +1,26 @@
-id: images_to_media_example
-label: 'Ejemplo de migración 4'
-migration_group: files
-source: 
+id: upgrade_d7_media_images
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Public files'
+source:
+  plugin: d7_file
+  scheme: public
   constants:
-    SOURCE_BASE_PATH: modules/custom/migrate_api_cj4/assets/images
     DRUPAL_FILE_DIRECTORY: 'public://'
-  plugin: csv
-  path: modules/custom/migrate_api_cj4/data/nodo_ejemplo4.csv
-  ids: [id]
-  header_offset: null
-  fields:
-    - name: id
-      label: 'Image id'
-    - name: image
-      label: 'Image name'
+# plugin: csv
+# path: modules/custom/migrate_api_cj4/data/nodo_ejemplo4.csv
+# ids: [id]
+# header_offset: null
+# fields:
+#   - name: id
+#     label: 'Image id'
+#   - name: image
+#     label: 'Image name'
 process:
   pseudo_destination_filename:
     -
