@@ -13,6 +13,7 @@ source:
   scheme: public
   constants:
     DRUPAL_FILE_DIRECTORY: 'public://'
+    source_base_path: /var/www/html/web/drupal7/src/ #??
 # plugin: csv
 # path: modules/custom/migrate_api_cj4/data/nodo_ejemplo4.csv
 # ids: [id]
