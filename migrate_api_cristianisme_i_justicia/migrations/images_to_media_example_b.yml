@@ -15,6 +15,10 @@ source:
     DRUPAL_FILE_DIRECTORY: 'public://'
     source_base_path: /var/www/html/web/drupal7/src/ #needed?
 process:
+  mid:
+    plugin: migration_lookup
+    migration: upgrade_d7_file
+    source: fid
   pseudo_destination_path:
     -
       plugin: concat

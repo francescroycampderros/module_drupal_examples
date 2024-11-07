@@ -123,10 +123,12 @@ process:
 #      source: field_publicacions_relacionades
 #      process:
 #        target_id: nid
-  field_imatge_principal/target_id:
+  field_imatge_principal:
     -
-      plugin: default_value
-      default_value: '6643'
+      plugin: sub_process
+      source: field_image
+      process:
+        target_id: fid
 destination:  
   plugin: 'entity_complete:node'
   translations: true
