@@ -5,6 +5,10 @@
  */
 namespace Drupal\hello_world\Controller;
 
+use Monolog\Level;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 use Drupal\Core\Render\HtmlResponse;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Controller\ControllerBase;
@@ -20,7 +24,15 @@ class HelloController extends ControllerBase {
   }
 
   public function content() {
-    
+  
+    // create a log channel
+    $log = new Logger('name');
+    $log->pushHandler(new StreamHandler('example.log', Level::Warning));
+    // add records to the log
+    $log->warning('Foo');
+    $log->error('Bar');
+
+
     // Si vols que es vegi amb el mateix tema:
     #return array(
     #  '#type' => 'markup',
