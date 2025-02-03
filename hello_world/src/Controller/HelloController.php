@@ -5,6 +5,8 @@
  */
 namespace Drupal\hello_world\Controller;
 
+require __DIR__ . '/../../vendor/autoload.php';
+
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
