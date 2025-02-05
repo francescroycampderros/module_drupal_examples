@@ -5,3 +5,11 @@ hello.content:
     _title: 'Hello World'
   requirements:
     _permission: 'access content'
+
+hello.secondcontent:
+  path: '/second_content/{name_1}/{name_2}'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\HelloController::secondContent'
+    _title: 'Hello World'
+  requirements:
+    _permission: 'access content'

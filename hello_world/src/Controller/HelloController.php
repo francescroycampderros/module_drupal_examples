@@ -46,6 +46,14 @@ class HelloController extends ControllerBase {
     $result = $query->execute();
     $array_with_results = array_values($result->fetchAllAssoc('nid'));
 
-    return new HtmlResponse("Hola: ".json_encode($array_with_results).".");
+    return new HtmlResponse("Hola: ".json_encode($array_with_results)." - ".time().". disable cache to see time changing at each refresh");
+  }
+
+  // http://www.cristianismeijusticia.local/second_content/francesc/marc
+  public function secondContent($name_1, $name_2){
+    return array(
+      '#type' => 'markup',
+      '#markup' => 'Hello '.$name_1.' and '.$name_2,
+    );
   }
 }
