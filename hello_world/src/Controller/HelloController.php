@@ -22,7 +22,7 @@ class HelloController extends ControllerBase {
 
 
   public function __construct(Connection $connectionService){
-    $this->dbConnection = $connectionService;
+    $this->dbConnection = $connectionService; 
   }
 
   public function content() {
@@ -42,7 +42,7 @@ class HelloController extends ControllerBase {
     #);
   
     // Si no:
-    $query = $this->dbConnection->select('node', 'n')->fields('n', ['nid'])->condition('nid', ['100003'], 'IN');;
+    $query = $this->dbConnection->select('node', 'n')->fields('n', ['nid'])->condition('nid', ['100003'], 'IN'); //using the Drupal API...
     $result = $query->execute();
     $array_with_results = array_values($result->fetchAllAssoc('nid'));
 
