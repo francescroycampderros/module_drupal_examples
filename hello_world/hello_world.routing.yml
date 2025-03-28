@@ -13,3 +13,11 @@ hello.secondcontent:
     _title: 'Hello World'
   requirements:
     _permission: 'access content'
+
+hello.thirdcontent:
+  path: '/third'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\ByeController::content'
+    _title: 'Third'
+  requirements:
+    _permission: 'access content'
