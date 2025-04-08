@@ -5,7 +5,7 @@
  */
 namespace Drupal\hello_world\Controller;
 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../../../vendor/autoload.php';
 
 use Drupal\Core\Controller\ControllerBase;
 
