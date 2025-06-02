@@ -1,0 +1,7 @@
+rsvplist.formdemo:
+  path: '/rsvplistdemo'
+  defaults:
+    _form: '\Drupal\rsvplist\Form\RSVPForm' #_form!!! i no controller. I apunta classe i no mètode...
+    _title: 'RSVP to this Event (demo)'
+  requirements:
+    _permission: 'access content'
