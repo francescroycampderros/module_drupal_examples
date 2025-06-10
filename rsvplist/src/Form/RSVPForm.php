@@ -27,7 +27,15 @@
     public function buildForm(array $form, FormStateInterface $form_state)
     {
         $node = \Drupal::routeMatch()->getParameter('node');
-        $nid = $node->id();
+        
+        //print_r($node);
+        //die();
+
+        if(!is_null($node)){
+            $nid = $node->id();
+        }else{
+            $nid = 0;
+        }
 
         $form['email'] = [
             '#type' => 'textfield',
