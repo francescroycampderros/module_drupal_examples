@@ -78,13 +78,13 @@ class RSVPForm extends FormBase {
         $database = \Drupal::database();
         $query = $database->select('users','u');
         $query->condition('u.uid',0,'=');
-        $query->fields('u',['uid','name','created']);
+        $query->fields('u',['uid','langcode']);
 
         $result = $query->execute();
 
         
 
-        $this->messenger()->addMessage($result->fetchAllAssoc('name'));       
+        $this->messenger()->addMessage($result->fetchAllAssoc('uid'));       
 
 
     }
