@@ -82,11 +82,8 @@ class RSVPForm extends FormBase {
 
         $result = $query->execute();
 
-        
-
-        $this->messenger()->addMessage($result->fetchAllAssoc('uid'));       
-
-
+        print_r($result->fetchAllAssoc('uid'));
+        die();
     }
     
 
