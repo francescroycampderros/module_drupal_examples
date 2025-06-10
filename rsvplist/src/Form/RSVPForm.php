@@ -73,6 +73,8 @@ class RSVPForm extends FormBase {
         $this->messenger()->addMessage($this->t("The form is working! You entered @entry.", ['@entry'=> $submitted_email]));       
 
         // Entec que aquí posarem el insert a la bbdd...
+        
+        
         $database = \Drupal::database();
         $query = $database->select('users','u');
         $query->condition('u.uid',0,'=');
@@ -80,7 +82,9 @@ class RSVPForm extends FormBase {
 
         $result = $query->execute();
 
-        $this->messenger()->addMessage($result->fetchCol(0));       
+        
+
+        $this->messenger()->addMessage($result->fetchAllAssoc('name'));       
 
 
     }
