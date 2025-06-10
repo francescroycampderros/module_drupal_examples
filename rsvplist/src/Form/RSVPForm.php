@@ -39,14 +39,14 @@
 
         $form['email'] = [
             '#type' => 'textfield',
-            '#title' => StringTranslationTrait::t('Email address'),
+            '#title' => $this->t('Email address'),
             '#size' => 25,
-            '#description' => StringTranslationTrait::t('We will send you updates to the email you provide.') ,
+            '#description' => $this->t('We will send you updates to the email you provide.') ,
             '#required' => TRUE,
         ];
         $form['submit'] = [
             '#type' => 'submit',
-            '#value' => StringTranslationTrait::t('RSVP'),
+            '#value' => $this->t('RSVP'),
         ];
         $form['nid'] = [
             '#type' => 'hidden',
@@ -59,7 +59,7 @@
     public function submitForm(array &$form, FormStateInterface $form_state)
     {
  	$submitted_email = $form_state->getValue('email');
-        $this->messenger()->addMessage(StringTranslationTrait::t("The form is working! You entered @entry.", ['@entry'=> $submitted_email]));       
+        $this->messenger()->addMessage($this->t("The form is working! You entered @entry.", ['@entry'=> $submitted_email]));       
     }
     
 
