@@ -71,6 +71,18 @@ class RSVPForm extends FormBase {
     public function submitForm(array &$form, FormStateInterface $form_state){
  	    $submitted_email = $form_state->getValue('email');
         $this->messenger()->addMessage($this->t("The form is working! You entered @entry.", ['@entry'=> $submitted_email]));       
+
+        // Entec que aquí posarem el insert a la bbdd...
+        $database = \Drupal::database();
+        $query = $database->select('users','u');
+        $query->condition('u.uid',0,'=');
+        $query->fields('u',['uid','name','created']);
+
+        $result = $query->execute();
+
+        $this->messenger()->addMessage($result->fetchCol(0));       
+
+
     }
     
 
