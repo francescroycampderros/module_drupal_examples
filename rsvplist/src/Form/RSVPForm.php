@@ -5,13 +5,12 @@
  * A form to collect an email address for RSVP details.
  */
 
- namespace Drupal\rsvplist\Form;
+namespace Drupal\rsvplist\Form;
 
- use Drupal\Core\Form\FormBase;
- use Drupal\Core\Form\FormStateInterface;
- use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\FormStateInterface;
 
- class RSVPForm extends FormBase {
+class RSVPForm extends FormBase {
 
    /**
    * {@inheritdoc}
@@ -21,11 +20,16 @@
         return 'rsvplist_email_form';
     }
 
+    //
+    //
+    // IMPORTANT, NO ESTEM USANT WEBFORM MODULE SINO QUE USEM LA API!!!!
+    //
+    //
+
     /**
      * {@inheritdoc}
      */
-    public function buildForm(array $form, FormStateInterface $form_state)
-    {
+    public function buildForm(array $form, FormStateInterface $form_state){
         $node = \Drupal::routeMatch()->getParameter('node');
         
         //print_r($node);
@@ -56,9 +60,16 @@
         return $form; 
     }
 
-    public function submitForm(array &$form, FormStateInterface $form_state)
-    {
- 	$submitted_email = $form_state->getValue('email');
+    public function validateForm(array &$form, FormStateInterface $form_state){
+        $submitted_email = $form_state->getValue('email');
+        if(!\Drupal::service('email.validator')->isValid($submitted_email)){
+            $form_state->setErrorByName('email',$this->t("It is not a valid email: %mail",["%mail"=> $submitted_email]));
+        }
+    
+    }
+
+    public function submitForm(array &$form, FormStateInterface $form_state){
+ 	    $submitted_email = $form_state->getValue('email');
         $this->messenger()->addMessage($this->t("The form is working! You entered @entry.", ['@entry'=> $submitted_email]));       
     }
     
